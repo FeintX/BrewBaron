@@ -19,7 +19,7 @@ Brew Baron is the ultimate brewery management game. Start from the bottom and bu
 
 ##### The Goal
 
-The goal of Brew Baron is to earn as much profit as possible within a set number of in-game years. 
+The goal of Brew Baron is to earn as much profit as possible within a set number of in-game years. Each year is divided into 52 weeks with 13 week seasons. Gameplay is turn based with actions such as growing and fermenting forcing the player to advance to the next week to progress further. Some styles of beer will be more profitable during certain seasons(Märzen/Oktoberfest beers will be more profitable during Autumn for example)
 
 ##### Modular
 
@@ -27,12 +27,37 @@ Gameplay in Brew Baron is done through separate modules for each step of the bre
 
 ## Farm
 
+Starting with a small farm the player can grow a variety of different grains used in the brewing process. Farm plots are laid out in a grid with each square representing one acre of land. Grains would take a few weeks to grow before they can be harvested then sold or sent to the malthouse to be malted.
+
+* Start with 1 acre farm
+* Additional plots can be purchased for xxxx dollars
+* Seeds are purchased from the marketplace
+    * Barley
+    * Wheat
+    * Oats
+    * Rye
+* Crops take 4 weeks from planting to be ready for harvest
+* Crops need to be watered each week to ensure they don't die
+    * Missed watering would reduce grain yield by 50%
+* After harvesting grain can be stored, sent to the malthouse, or sold at the marketplace
+    * Storage capacity can be increased for a fee
+ 
+
+
 ## Malthouse
+
+
 
 ## Hopyard
 
+
+
 ## Brewery
 
+
+
 ## Distribution
+
+
 
 ## Taproom
