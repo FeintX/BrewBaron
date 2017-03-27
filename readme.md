@@ -42,15 +42,20 @@ Starting with a small farm the player can grow a variety of different grains use
 * After harvesting grain can be stored, sent to the malthouse, or sold at the marketplace
     * Storage capacity can be increased for a fee
  
-
-
 ## Malthouse
 
+In the malthouse the player converts raw grain from the farm or marketplace into malts used in brewing. Grains can also be smoked, roasted, toasted, and flaked to enhance certain flavors and other contributions to a beer.
+
+* Uses grains grown on the farm or purchased from the marketplace
+* Capacity can be increased for a fee
+* Limited to a certain number of batches or hours completed during each weekly turn
+* Equipment for roasting and flaking grains can be purchased
+* Finished malts can be sent to the brewery or sold at the marketplace
 
 
 ## Hopyard
 
-
+Functions very similar to the farm. A large variety of different hops can be grown. Hops do not need to be replanted after harvesting. However, they take longer to grow to a full size plant. The first harvest will be 10% of the final capacity. Each harvest the capacity will grow by 10% of the final capacity until that capacity is reached. 
 
 ## Brewery
 
