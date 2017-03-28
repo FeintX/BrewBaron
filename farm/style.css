@@ -1,0 +1,18 @@
+.farm-grid {
+	position: relative;
+
+
+}
+
+.farm-plot {
+	background-color: #DDD;
+	position: absolute;
+	text-align: center;
+	width: 50px;
+	height: 50px;
+	margin: 5px;
+}
+
+.purchased {
+	background-color: #652;
+}
