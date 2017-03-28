@@ -89,7 +89,7 @@ function updatePlotStatus(plotNumber) {
     for (plotCount in plotStatus) {
         if (plotStatus[plotCount].timeRemaining > 0) {
             plotStatus[plotCount].timeRemaining -= 1;
-            $("#" + plotCount).text(plotStatus[plotCount].timeRemaining);
+            $("#" + plotCount).html(percentComplete(plotCount));
             if (plotStatus[plotCount].timeRemaining == 0) {
                 $("#" + plotCount).removeClass("planted").
                     addClass("ready-harvest").text("Ready");
@@ -100,10 +100,16 @@ function updatePlotStatus(plotNumber) {
 };
 
 $("#advance-week-button").click(function() {
+    advanceWeek();
+});
+
+window.setInterval(advanceWeek, 1000);
+
+function advanceWeek() {
     gameWeek ++;
     updatePlotStatus();
     updateGameStats();
-});
+}
 
 $("#buy-farm-plot").click(function() {
     if (player.money >= farmPlotCost) {
@@ -111,36 +117,34 @@ $("#buy-farm-plot").click(function() {
         ownedPlots++;
         createFarmPlot(1);
         updateGameStats();
-    }
+    };
 });
 
-$("#buy-grain-barley").click(function() {
+$("#buy-grain-barley").mousedown(function() {
+    buyBarley();
+});
+
+function buyBarley() {
     if (player.money >= grainBarley.cost) {
         player.money -= grainBarley.cost;
         grainBarley.inventorySeeds += 1;
         updateGameStats();
     }
-});
+};
+
+$("#sell-all-grain-barley").click(function() {
+    player.money += (grainBarley.inventoryHarvested * grainBarley.value);
+    grainBarley.inventoryHarvested = 0;
+    updateGameStats();
+})
 
 $("#sell-grain-barley").click(function() {
     if (grainBarley.inventoryHarvested > 0) {
         grainBarley.inventoryHarvested -= 1;
         player.money += grainBarley.value;
         updateGameStats();
-    }
+    };
 })
-
-/*$(".farm-grid").on("mouseover", ".farm-plot", function() {
-    if (checkMouseStatus === true) {
-        var plotID = $(this).attr("id");
-        if ($(this).hasClass("empty") == true) {
-            plantBarley(plotID);
-        }
-        if ($(this).hasClass("ready-harvest") == true) {
-            harvestBarley(plotID);
-        }
-    }
-});*/
 
 $(".farm-grid").on("mouseover", ".farm-plot", function() {
     var plotID = $(this).attr("id");
@@ -164,13 +168,13 @@ function plotActions(plotToAffect) {
 
 
 function plantBarley(plotID) {
-    if (grainBarley.inventorySeeds >= 1) {
-            grainBarley.inventorySeeds -= 1;
+    if (player.money >= grainBarley.cost) {
+            player.money -= grainBarley.cost;
             $("#" + plotID).removeClass("empty").addClass("planted");
             plotStatus[plotID].grain = "Barley";
             plotStatus[plotID].timeRemaining = grainBarley.growTime;
             $("#" + plotID).removeClass("empty").addClass("planted").
-                text(plotStatus[plotID].timeRemaining);
+                html(percentComplete(plotID));
             updateGameStats();  
         }
 };
@@ -181,5 +185,15 @@ function harvestBarley(plotID) {
         text("");
     updateGameStats();
 };
+
+function percentComplete(plot) {
+    if (plotStatus[plot].timeRemaining == grainBarley.growTime) {
+        return plotStatus[plot].grain + "<br />0%";
+    } else {
+    return plotStatus[plot].grain + "<br />" +
+        Math.trunc(100 * (grainBarley.growTime - plotStatus[plot].timeRemaining)
+        / grainBarley.growTime) + "%";
+    }
+}
 
 });
