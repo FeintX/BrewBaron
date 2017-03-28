@@ -1,18 +1,47 @@
+div {
+	box-sizing: border-box;
+}
 .farm-grid {
+	margin-top: 10px;
 	position: relative;
-
+	background-color: #282;
+	width: 550px;
+	height: 550px;
+	cursor: pointer;
 
 }
 
 .farm-plot {
-	background-color: #DDD;
 	position: absolute;
 	text-align: center;
-	width: 50px;
-	height: 50px;
-	margin: 5px;
-}
+	width: 55px;
+	height: 55px;
+	margin: 0px;
+	border: solid 2px;
+	border-radius: 2px;
+	cursor: pointer;
+	-webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+  	user-select: none;
+}	
 
 .purchased {
 	background-color: #652;
+
+}
+
+.empty {
+	background-color: #652;
+	border-color: #541;
+}
+
+.planted {
+	background-color: #BB5;
+	border-color: #990;
+}
+
+.ready-harvest {
+	background-color: #5B5;
+	border-color: #393;
 }
