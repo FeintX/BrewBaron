@@ -2,6 +2,8 @@
 
 ## Overview
 
+Play the latest version [here](https://feintx.github.io/BrewBaron/farm/).
+
 #### The Pitch
 
 Brew Baron is the ultimate brewery management game. Start from the bottom and build your brewing empire to be the pinnacle of industry. You can control every step of the brewing process from growing the grain to pouring the glass.
