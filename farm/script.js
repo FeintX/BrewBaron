@@ -90,11 +90,11 @@ function createGrainButtons () {
         $("#grain-button-contain").
             append('<button type="button" class="sell-one" id="sell-' +
             grainInfo[grainButtonToCreate].keyName + '">Sell ' +
-            grainInfo[grainButtonToCreate].keyName + ' - $' +
+            grainInfo[grainButtonToCreate].name + ' - $' +
             grainInfo[grainButtonToCreate].value +
             '</button><button type="button" class="sell-all" id="sell-all-' +
             grainInfo[grainButtonToCreate].keyName + '">Sell All ' +
-            grainInfo[grainButtonToCreate].keyName + '</button><br />');
+            grainInfo[grainButtonToCreate].name + '</button><br />');
     }
 }
 
@@ -244,7 +244,7 @@ function plantGrain(plantPlotID) {
 };
 
 function harvestGrain(harvestPlotID) {
-    var grainToHarvest = $(".grain-selector").val();
+    var grainToHarvest = plotStatus[harvestPlotID].grain.toLowerCase();
     grainInfo[grainToHarvest].farmInventory += 1;
     $("#" + harvestPlotID).removeClass("ready-harvest").addClass("empty").
         text("");
