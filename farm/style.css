@@ -10,6 +10,16 @@ div {
 	cursor: pointer;
 
 }
+button {
+	width: 175px;
+}
+.main-contain {
+	position: relative;
+	text-align: center;
+	width: 500px;
+	height: 800px;
+	margin: 5px auto;
+}
 
 .farm-plot {
 	position: absolute;
