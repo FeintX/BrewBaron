@@ -13,13 +13,21 @@
 	</head>
 
 	<body>
-	<div class="main-contain">
+
+	<div class="player-stat-header">
 		<div class="date" id="display-date"></div>
 		<div class="player-stat" id="display-money"></div>
+		<button type="button" id="advance-week-button">Advance Week</button><br />
+		<button type="button" id="switch-module-farm">Go To Farm</button><br />
+		<button type="button" id="switch-module-malt">Go To Malthouse</button><br />
+	</div>
+
+	<div class="module-contain module-hidden" id="module-farm">
+
 		<div class="player-stat-contain" id="grain-count-contain"></div>
 		<div class="player-button-contain" id="grain-button-contain"></div>
 
-		<button type="button" id="buy-farm-plot">Buy Farm Plot - $1000</button><button type="button" id="advance-week-button">Advance Week</button>
+		<button type="button" id="buy-farm-plot">Buy Farm Plot - $1000</button>
 		
 		<br />
 		<span>Planting:</span>
@@ -28,7 +36,12 @@
 		<div class="farm-grid"></div>
 
 		<script src="script.js"></script>
+	</div>
+
+	<div class="module-contain module-hidden" id="module-malt">
+shitfuck
 	</div>	
+
 	</body>
 
 </html>

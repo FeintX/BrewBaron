@@ -1,12 +1,10 @@
 $(document).ready(function(){
 
-
 // initialize starting variables
 var gameWeek = 0;
 var player = {
     money: 100,
 }
-
 
 var farmPlotCost = 1000;
 var ownedPlots = 4;
@@ -21,61 +19,44 @@ var currentGridPosition = {
 }
 
 var grainInfo = {};
-    grainInfo.corn = {
-        name: "Corn",
-        keyName: "corn",
-        cost: 40,
-        value: 60,
-        growTime: 3,
-        farmInventory: 0
-    };
-    grainInfo.oats = {
-        name: "Oats",
-        keyName: "oats",
-        cost: 50,
-        value: 150,
-        growTime: 6,
-        farmInventory: 0
-    };
-    grainInfo.barley = {
-        name: "Barley",
-        keyName: "barley",
-        cost: 100,
-        value: 200,
-        growTime: 4,
-        farmInventory: 0
-    };
-    grainInfo.wheat = {
-        name: "Wheat",
-        keyName: "wheat",
-        cost: 150,
-        value: 400,
-        growTime: 8,
-        farmInventory: 0
-    };
-    grainInfo.rye = {
-        name: "Rye",
-        keyName: "rye",
-        cost: 300,
-        value: 500,
-        growTime: 3,
-        farmInventory: 0
-    };
+function GrainProto(name, cost, value, growTime, farmInventory) {
+    this.name = name;
+    this.keyName = name.toLowerCase();
+    this.cost = cost;
+    this.value = value;
+    this.growTime = growTime;
+    this.farmInventory = farmInventory;
+}
+
+grainInfo.corn = new GrainProto("Corn", 40, 60, 2, 0);
+grainInfo.oats = new GrainProto("Oats", 50, 120, 6, 0);
+grainInfo.barley = new GrainProto("Barley", 100, 250, 4, 0);
+grainInfo.wheat = new GrainProto("Wheat", 150, 270, 8, 0);
+grainInfo.rye = new GrainProto("Rye", 300, 360, 3, 0);
 
 var plotStatus = {};
 var checkMouseStatus = false;
 
-createGrainCounters();
-createGrainButtons();
-createGrainSelectBox();
-updateGameStats();
-createFarmPlot(ownedPlots);
+startNewGame();
 
 $(document).mousedown(function() {
     checkMouseStatus = true;
 }).mouseup(function() {
     checkMouseStatus = false;
 });
+
+function startNewGame () {
+    createGrainCounters();
+    createGrainButtons();
+    createGrainSelectBox();
+    updateGameStats();
+    createFarmPlot(ownedPlots);
+    activateModule("farm");
+}
+
+function activateModule (moduleToActivate) {
+    $("#module-" + moduleToActivate).toggleClass("module-hidden");
+}
 
 function createGrainCounters () {
     for (var grainCountToCreate in grainInfo) {
@@ -103,14 +84,15 @@ function createGrainSelectBox () {
         $(".grain-selector").append('<option value="' +
             grainInfo[grainSelectToCreate].keyName + '">' +
             grainInfo[grainSelectToCreate].name + ' $' +
-            grainInfo[grainSelectToCreate].cost + '</option>')
+            grainInfo[grainSelectToCreate].cost + ' - Grow Time: ' +
+            grainInfo[grainSelectToCreate].growTime + ' weeks</option>')
     }
 }
 
 function updateGameStats() {
     $("#display-date").text("Year " + Math.floor(gameWeek / 52 + 1) +
         " Week " + (gameWeek % 52 + 1));
-    $("#display-money").text("Money: " + player.money); 
+    $("#display-money").text("Money: $" + player.money); 
     for (var grainUpdateCount in grainInfo) {
         updateCropStats(grainUpdateCount);
     }

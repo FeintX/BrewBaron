@@ -1,6 +1,12 @@
 div {
 	box-sizing: border-box;
 }
+
+.player-stat-header {
+	text-align: right;
+	float: right;
+}
+
 .farm-grid {
 	margin-top: 10px;
 	position: relative;
@@ -13,12 +19,16 @@ div {
 button {
 	width: 175px;
 }
-.main-contain {
+.module-contain {
 	position: relative;
 	text-align: center;
 	width: 500px;
 	height: 800px;
 	margin: 5px auto;
+}
+
+.module-hidden {
+	display: none;
 }
 
 .farm-plot {
