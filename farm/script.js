@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
 // initialize starting variables
+var activeModule;
 var gameWeek = 0;
 var player = {
     money: 100,
@@ -55,8 +56,17 @@ function startNewGame () {
 }
 
 function activateModule (moduleToActivate) {
+    $("#module-" + activeModule).toggleClass("module-hidden")
     $("#module-" + moduleToActivate).toggleClass("module-hidden");
+    activeModule = moduleToActivate;
 }
+
+$(".player-stat-header").on("click", ".switch-module", function() {
+    var moduleToSwitch = $(this).attr("id").substring(14);
+    activateModule(moduleToSwitch);
+});
+
+
 
 function createGrainCounters () {
     for (var grainCountToCreate in grainInfo) {
